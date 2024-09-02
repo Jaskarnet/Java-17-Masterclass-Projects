@@ -5,35 +5,44 @@ import java.util.Arrays;
 import java.util.List;
 
 public class BankCustomer {
+    private static int LAST_ID = 10_000_000;
+
     private final String name;
-    private final int id;
-    private final List<BankAccount> bankAccounts = new ArrayList<>();
+    private final int customerId;
+    private final List<BankAccount> accounts = new ArrayList<>();
 
-    private static int LAST_ID = 1;
-
-    public BankCustomer(String name, double checkingAmount, double savingsAmount) {
+    BankCustomer(String name, double checkingAmount, double savingsAmount) {
         this.name = name;
-        this.id = LAST_ID++;
-        bankAccounts.add(new BankAccount(BankAccount.AccountType.CHECKING, checkingAmount));
-        bankAccounts.add(new BankAccount(BankAccount.AccountType.SAVINGS, savingsAmount));
+        this.customerId = LAST_ID++;
+        accounts.add(new BankAccount(BankAccount.AccountType.CHECKING, checkingAmount));
+        accounts.add(new BankAccount(BankAccount.AccountType.SAVINGS, savingsAmount));
     }
 
     public String getName() {
         return name;
     }
 
-    public int getId() {
-        return id;
+    public String getCustomerId() {
+        return "%015d".formatted(customerId);
     }
 
-    public List<BankAccount> getBankAccounts() {
-        return new ArrayList<>(bankAccounts);
+    public List<BankAccount> getAccounts() {
+        return List.copyOf(accounts);
+    }
+
+    public BankAccount getAccount(BankAccount.AccountType type) {
+        for (BankAccount a : accounts) {
+            if (a.getAccountType() == type) {
+                return a;
+            }
+        }
+        return null;
     }
 
     @Override
     public String toString() {
-        String[] accountStrings = new String[bankAccounts.size()];
-        Arrays.setAll(accountStrings, i -> bankAccounts.get(i).toString());
-        return "Customer: %s (id:%015d)%n\t%s%n".formatted(name, id, String.join("\n\t", accountStrings));
+        String[] accountStrings = new String[accounts.size()];
+        Arrays.setAll(accountStrings, i -> accounts.get(i).toString());
+        return "Customer: %s (id:%015d)%n\t%s%n".formatted(name, customerId, String.join("\n\t", accountStrings));
     }
 }
