@@ -1,7 +1,5 @@
 package net.jaskar;
 
-import net.jaskar.student.Student;
-
 import java.util.stream.Stream;
 
 public class Main {

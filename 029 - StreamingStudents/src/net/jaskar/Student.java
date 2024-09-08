@@ -1,7 +1,4 @@
-package net.jaskar.student;
-
-import net.jaskar.Course;
-import net.jaskar.CourseEngagement;
+package net.jaskar;
 
 import java.time.LocalDate;
 import java.util.Map;
@@ -33,7 +30,7 @@ public class Student {
                 random.nextBoolean(),
                 courses);
         for (Course c : courses) {
-            int lecture = random.nextInt(1, c.lectureCount());
+            int lecture = random.nextInt(30, c.lectureCount());
             int year = random.nextInt(student.getYearEnrolled(), maxYear);
             int month = random.nextInt(1, 13);
             if (year == (maxYear - 1)) {
@@ -96,7 +93,7 @@ public class Student {
         return info == null ? 0 : info.getMonthsSinceActive();
     }
 
-    double getPercentComplete(String courseCode) {
+    public double getPercentComplete(String courseCode) {
         var info = engagementMap.get(courseCode);
         return info == null ? 0 : info.getPercentComplete();
     }
