@@ -1,0 +1,11 @@
+Directory Contents: 
+E:\PROGRAMY\IntelliJ IDEA\Repos\Java 17 Masterclass\037 - DirectoryFileChallenge\public
+E:\PROGRAMY\IntelliJ IDEA\Repos\Java 17 Masterclass\037 - DirectoryFileChallenge\public\assets
+E:\PROGRAMY\IntelliJ IDEA\Repos\Java 17 Masterclass\037 - DirectoryFileChallenge\public\assets\icons
+E:\PROGRAMY\IntelliJ IDEA\Repos\Java 17 Masterclass\037 - DirectoryFileChallenge\public\assets\icons\index.txt
+E:\PROGRAMY\IntelliJ IDEA\Repos\Java 17 Masterclass\037 - DirectoryFileChallenge\public\assets\icons\indexCopy.txt
+E:\PROGRAMY\IntelliJ IDEA\Repos\Java 17 Masterclass\037 - DirectoryFileChallenge\public\assets\index.txt
+E:\PROGRAMY\IntelliJ IDEA\Repos\Java 17 Masterclass\037 - DirectoryFileChallenge\public\assets\indexCopy.txt
+E:\PROGRAMY\IntelliJ IDEA\Repos\Java 17 Masterclass\037 - DirectoryFileChallenge\public\index.txt
+E:\PROGRAMY\IntelliJ IDEA\Repos\Java 17 Masterclass\037 - DirectoryFileChallenge\public\indexCopy.txt
+Generated: 2024-09-18T13:20:52.055554200
