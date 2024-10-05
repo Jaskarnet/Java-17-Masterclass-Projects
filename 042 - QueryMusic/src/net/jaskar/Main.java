@@ -21,13 +21,22 @@ public class Main {
             throw new RuntimeException(e);
         }
 
-        String albumName = "Tapestry";
-        String query = "SELECT * FROM music.albumview WHERE album_name='%s'".formatted(albumName);
-
         var dataSource = new MysqlDataSource();
         dataSource.setServerName(props.getProperty("serverName"));
         dataSource.setPort(Integer.parseInt(props.getProperty("port")));
         dataSource.setDatabaseName(props.getProperty("databaseName"));
+
+
+        // The 'LIMIT' clause in the SQL query is specific to MySQL and is not part of the ANSI SQL standard,
+        // which aims to provide vendor-independent SQL functionality.
+        // To ensure broader compatibility, an alternative approach is to limit the result set directly
+        // through the data source, which behaves similarly across databases.
+        try {
+            dataSource.setMaxRows(10); // Limits the result set to 10 rows at the data source level
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        String query = "SELECT * FROM music.artists LIMIT 10"; // MySQL-specific query
 
         try (var connection = dataSource.getConnection(
                 props.getProperty("user"),
@@ -37,12 +46,7 @@ public class Main {
             ResultSet resultSet = statement.executeQuery(query);
 
             var meta = resultSet.getMetaData();
-            for (int i = 1; i <= meta.getColumnCount(); i++) {
-                System.out.printf("%d %s %s%n",
-                        i,
-                        meta.getColumnName(i),
-                        meta.getColumnTypeName(i));
-            }
+
             System.out.println("================================");
 
             for (int i = 1; i <= meta.getColumnCount(); i++) {
