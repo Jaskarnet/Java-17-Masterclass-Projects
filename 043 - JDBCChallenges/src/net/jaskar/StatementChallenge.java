@@ -6,7 +6,7 @@ import java.sql.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class Main {
+public class StatementChallenge {
     private static String USE_SCHEMA = "USE storefront";
 
     private static int MYSQL_DB_NOT_FOUND = 1049;
@@ -151,5 +151,27 @@ public class Main {
         } finally {
             conn.setAutoCommit(true);
         }
+    }
+
+    public static boolean printRecords(ResultSet resultSet) throws SQLException {
+
+        boolean foundData = false;
+        var meta = resultSet.getMetaData();
+
+        System.out.println("===================");
+
+        for (int i = 1; i <= meta.getColumnCount(); i++) {
+            System.out.printf("%-17s", meta.getColumnName(i).toUpperCase());
+        }
+        System.out.println();
+
+        while (resultSet.next()) {
+            for (int i = 1; i <= meta.getColumnCount(); i++) {
+                System.out.printf("%-17s", resultSet.getString(i));
+            }
+            System.out.println();
+            foundData = true;
+        }
+        return foundData;
     }
 }

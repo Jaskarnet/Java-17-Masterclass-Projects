@@ -8,10 +8,24 @@ import java.nio.file.Path;
 import java.sql.*;
 import java.util.*;
 
-record Item(String itemDescription, int quantity){}
-record Order(String dateTime, List<Item> items){}
+record Item(String itemDescription, int quantity){
+    public String toJSON() {
+        return new StringJoiner(", ", "{", "}")
+                .add("\"itemDescription\":\"" + itemDescription + "\"")
+                .add("\"quantity\":" + quantity)
+                .toString();
+    }
+}
+record Order(String dateTime, List<Item> items){
+    public String getDetailsJSON() {
+        var sj = new StringJoiner(", ", "[", "]");
+        items.forEach(item -> sj.add(item.toJSON()));
+        System.out.println(sj);
+        return sj.toString();
+    }
+}
 
-public class Challenge2 {
+public class PreparedStatementChallenge {
     public static void main(String[] args) {
         var datasource = new MysqlDataSource();
         datasource.setServerName("localhost");
@@ -29,7 +43,7 @@ public class Challenge2 {
         }
     }
 
-    private static List<Order> readCSV(Path path) {
+    static List<Order> readCSV(Path path) {
         List<Order> orders = new ArrayList<>();
         List<Item> currentItems = new ArrayList<>();
         String currentOrderDateTime = null;
