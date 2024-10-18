@@ -9,6 +9,7 @@ import java.util.TreeSet;
 @Entity
 @Table(name = "artists")
 public class Artist {
+    // If the entity is intended solely for reading data the @GeneratedValue annotation can be omitted
     @Id
     @Column(name="artist_id")
     private int artistId;
