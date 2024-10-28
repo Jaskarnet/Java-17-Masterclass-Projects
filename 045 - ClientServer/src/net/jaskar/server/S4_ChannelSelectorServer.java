@@ -10,7 +10,7 @@ import java.nio.channels.SocketChannel;
 import java.util.Iterator;
 import java.util.Set;
 
-public class ChannelSelectorServer {
+public class S4_ChannelSelectorServer {
     public static void main(String[] args) {
         try (ServerSocketChannel serverChannel = ServerSocketChannel.open()) {
             serverChannel.bind(new InetSocketAddress(5000));

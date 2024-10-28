@@ -8,7 +8,7 @@ import java.nio.channels.SocketChannel;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SimpleServer3_Channel {
+public class S3_SimpleServerChannel {
     public static void main(String[] args) {
         try (ServerSocketChannel serverChannel = ServerSocketChannel.open()) {
             serverChannel.socket().bind(new InetSocketAddress(5000));

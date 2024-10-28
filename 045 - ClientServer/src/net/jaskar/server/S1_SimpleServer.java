@@ -7,7 +7,7 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class SimpleServer1 {
+public class S1_SimpleServer {
     public static void main(String[] args) {
         try (ServerSocket serverSocket = new ServerSocket(5000)) {
             // Inner try block ensures that the accepted client connection is properly closed,

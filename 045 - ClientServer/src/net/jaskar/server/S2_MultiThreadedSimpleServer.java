@@ -9,7 +9,7 @@ import java.net.Socket;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class SimpleServer2_MultiThreaded {
+public class S2_MultiThreadedSimpleServer {
     public static void main(String[] args) {
         ExecutorService executorService = Executors.newCachedThreadPool();
         try (ServerSocket serverSocket = new ServerSocket(5000)) {
